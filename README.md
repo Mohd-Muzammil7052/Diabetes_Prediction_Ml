@@ -65,57 +65,50 @@ git clone https://github.com/<your-username>/Diabetes-Prediction-WebApp.git
 cd Diabetes-Prediction-WebApp
 pip install -r requirements.txt
 ```
+
 ## ⚙️ Setup
 
 1. Place the following files in the project root:
-   * movies_dict.pkl
-   * similarity.pkl
+   * modelforprediction.pkl
+   * standardScaler.pkl
 
-2. Get an API key from TMDB
-   Replace the API key in app.py:
+2. Run the Flask app:
    ```text
-   response = requests.get(
-    'https://api.themoviedb.org/3/movie/{}?language=en-US&api_key=YOUR_API_KEY'.format(movie_id)
-    )
+   python application.py
    ```
-
-3. Run the Streamlit app:
-
-```bash
-streamlit run app.py
-```
 
 ## 🖥️ Usage
 
-1. Open the Streamlit app in your browser.
-2. Select a movie from the dropdown list.
-3. Click Recommend.
-4. View top 5 similar movies with posters side by side.
+1. Open the app in your browser at http://127.0.0.1:5000/
+2. Navigate to:
+   * / → Home page
+   * /predictdata → Enter health parameters for prediction 
+3. The app will display:
+   * Diabetic
+   * Non-Diabetic
 ---
 
 ## 🛠️ Tech Stack
 
 * Python → Core language
-* Streamlit → Web UI for chatbot.
-- Scikit-learn → Cosine similarity
+* Flask → Backend web framework
+- Scikit-learn → Machine learning models
 + Pandas & NumPy → Data handling
-* NLTK → Text preprocessing
-* TMDB API → Movie posters & metadata
+* Seaborn → Data visualization (exploration phase)
+* HTML/CSS → Frontend templates
 
 ---
 
 ## 📌 Requirements
 
-See [requirements.txt](https://github.com/Mohd-Muzammil7052/Movie_Recommendation_System/blob/main/requirements.txt) for all dependencies:
+See [requirements.txt](https://github.com/Mohd-Muzammil7052/Diabetes_Prediction_Ml/blob/main/requirements.txt) for all dependencies:
 
 ```text
-numpy == 1.24.3
-pandas == 2.0.3
-ast
-nltk
-streamlit
+pandas
+numpy
 scikit-learn
-gunicorn
+seaborn
+Flask
 ```
 
 ---
@@ -123,16 +116,22 @@ gunicorn
 ## 🏗️ Project Structure  
 
 ```text
-📦 Movie-Recommender-System
- ┣ 📜 README.md                   # Documentation
- ┣ 📜 app.py                      # Streamlit app
- ┣ 📜 movie_recommendation.ipynb  # Notebook for model building
- ┣ 📜 requirements.txt            # Dependencies
- ┣ 📜 tmdb_5000_movies.csv        # Raw dataset (movies metadata from Kaggle)
- ┣ 📜 tmdb_5000_credits.csv       # Raw dataset (cast & crew from Kaggle)
- ┣ 📜 movies_dict.pkl             # Processed movie metadata
- ┣ 📜 similarity.pkl              # Pre-computed similarity matrix
-
+📦 Diabetes-Prediction-WebApp
+ ┣ 📂 Dataset
+ ┃ ┗ 📜 diabetes.csv
+ ┣ 📂 Model
+ ┃ ┣ 📜 modelforprediction.pkl
+ ┃ ┗ 📜 standardScaler.pkl
+ ┣ 📂 Notebook
+ ┃ ┣ 📜 logistic_regression.ipynb
+ ┃ ┗ 📜 naive_bayes_svm_decision_tree.ipynb
+ ┣ 📂 templates
+ ┃ ┣ 📜 home.html
+ ┃ ┣ 📜 index.html
+ ┃ ┗ 📜 single_prediction.html
+ ┣ 📜 application.py
+ ┣ 📜 requirements.txt
+ ┗ 📜 README.md
 ```
 
 ## 📄 License  
@@ -152,19 +151,6 @@ If you’d like to improve this project:
 3. Commit your changes (`git commit -m "Add new feature"`)  
 4. Push to the branch (`git push origin feature-branch`)  
 5. Open a Pull Request  
-
----
-
-## 🙌 Acknowledgments  
-
-Special thanks to the amazing open-source tools powering this project:  
-
-- [TMDB API](https://www.themoviedb.org/)
-- [Kaggle](https://www.kaggle.com/)
-- [Scikit-Learn](https://scikit-learn.org/stable/)  
-- [Pandas](https://pandas.pydata.org/)  
-- [Numpy](https://numpy.org/)  
-- [Streamlit](https://streamlit.io/)  
 
 ---
 
